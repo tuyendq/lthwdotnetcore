@@ -1,0 +1,19 @@
+@page
+@model razorpage.Pages.CreateModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelper
+@{
+    ViewData["Title"] = "Customer";
+}
+
+<html>
+    <body>
+        <p>
+            Enter your name
+        </p>
+        <div asp-validation-summary="All"></div>
+        <form method="POST">
+            <div>Name: <input asp-for="Customer.Name" /></div>
+            <input type="Submit" />
+        </form>
+    </body>
+</html>
