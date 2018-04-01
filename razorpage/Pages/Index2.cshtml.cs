@@ -1,8 +1,16 @@
-namespace razorpage.index2
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
+
+namespace razorpage.Pages
 {
-    public class Index2 : PageModel
+    public class IndexModel2 : PageModel
     {
-        
+        public string Message { get; private set; } = "PageModel in C#";
+
+        public void OnGet()
+        {
+            Message += $" Server time is { DateTime.Now }";
+        }
     }
 
 }
