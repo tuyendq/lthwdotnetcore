@@ -47,7 +47,35 @@ namespace PracticeQuotes.Api.Controllers
         }
 
         // PUT action
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(long id, Quote quote)
+        {
+            if (id != quote.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(quote).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
 
         // DELETE action
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var quote = await _context.Quotes.FindAsync(id);
+
+            if (quote == null)
+            {
+                return NotFound();
+            }
+
+            _context.Quotes.Remove(quote);
+            await _context.SaveChangesAsync();
+            
+            return NoContent();
+        }
     }
 }
